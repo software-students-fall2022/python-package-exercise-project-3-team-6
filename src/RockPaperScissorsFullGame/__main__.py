@@ -1,12 +1,12 @@
-import RockPaperScissorsFullGame.RPS as RPS
-#import RPS
+#import RockPaperScissorsFullGame.RPS as RPS
+import RPS
 
 def inputToItem(str):
-    if str.lower()[0] == "r":
+    if ("rock").startswith(str.lower()):
         return RPS.Item.Rock
-    elif str.lower()[0] == "p":
+    elif ("paper").startswith(str.lower()):
         return RPS.Item.Paper
-    elif str.lower()[0] == "s":
+    elif ("scissors").startswith(str.lower()):
         return RPS.Item.Scissors
     else:
         return None
