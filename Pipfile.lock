@@ -1,0 +1,34 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "2cb07e2390c009266d424158ca5fc88e19c92d3fa689dcfcea98b0aa88b0a189"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.10"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            },
+            {
+                "name": "testpypi",
+                "url": "https://test.pypi.org/simple/",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "rockpaperscissorsfullgame": {
+            "hashes": [
+                "sha256:bca87fc8597c9cdd20492154d5dd1651678156e17db02e4d0ac1b52e8b1472f4",
+                "sha256:daa8ceb6d13035dc9ab3cc5baba8c33807bece0ec4cb6eba079aef3f2174cbe3"
+            ],
+            "index": "testpypi",
+            "version": "==0.0.1"
+        }
+    },
+    "develop": {}
+}
