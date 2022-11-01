@@ -1,16 +1,6 @@
 #import RockPaperScissorsFullGame.RPS as RPS
 import RPS
 
-def inputToItem(str):
-    if ("rock").startswith(str.lower()):
-        return RPS.Item.Rock
-    elif ("paper").startswith(str.lower()):
-        return RPS.Item.Paper
-    elif ("scissors").startswith(str.lower()):
-        return RPS.Item.Scissors
-    else:
-        return None
-
 
 def main():
     play = True
@@ -21,7 +11,7 @@ def main():
             print("Thank you for playing!\n")
             break
         else:
-            playerItem = inputToItem(playerInput)
+            playerItem = RPS.inputToItem(playerInput)
             if(playerItem == None):
                 print("Invalid Input\n")
                 continue
