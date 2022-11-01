@@ -23,3 +23,13 @@ def getOutcome(playerItem, computerItem):
 def getComputerItem():
     index = random.randint(1,3)
     return Item(index)
+
+def inputToItem(str):
+    if ("rock").startswith(str.lower()):
+        return Item.Rock
+    elif ("paper").startswith(str.lower()):
+        return Item.Paper
+    elif ("scissors").startswith(str.lower()):
+        return Item.Scissors
+    else:
+        return None
