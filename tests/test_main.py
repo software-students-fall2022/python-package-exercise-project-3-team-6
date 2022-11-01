@@ -1,17 +1,21 @@
-import RockPaperScissorsFullGame.__main__ as main
-import RockPaperScissorsFullGame.RPS as RPS
-import pytest
+import os
+import sys
 
+sys.path.append(os.path.abspath("./src/RockPaperScissorsFullGame"))
+import __main__ as main #does not work
+# import __main__ also does not work
+# from __main__ import * also does not work
+import RPS as RPS
+import pytest
 # For testing 'def inputToItem' in __main__.py
 
-#Rather than testing if the input contains the correct first letter, check if the input is a substring of rock, paper, or scissor
 @pytest.mark.parametrize("player_input, expected", [
     ('r', RPS.Item.Rock),
     ('R', RPS.Item.Rock),
     ('ROCK', RPS.Item.Rock),
     ('rOcK',RPS.Item.Rock),
     ('rock', RPS.Item.Rock),
-    ('rat', None),
+    ('rat',  None),
     ('racket', None),
     ('p', RPS.Item.Paper),
     ('P', RPS.Item.Paper),
