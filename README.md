@@ -2,3 +2,5 @@
 # Python Package Exercise
 
 A little exercise to create a Python package, build it, test it, distribute it, and use it. See [instructions](./instructions.md) for details.
+
+![RPS workflow](https://github.com/software-students-fall2022/python-package-exercise-project-3-team-6/actions/workflows/tests.yml/badge.svg)
