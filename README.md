@@ -1,6 +1,20 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=9091343&assignment_repo_type=AssignmentRepo)
-# Python Package Exercise
+# Rock Paper Scissors Game
 
-A little exercise to create a Python package, build it, test it, distribute it, and use it. See [instructions](./instructions.md) for details.
+## Project description
+WIP
+
+## Features
+- Fun to play!
+- Easy to install
+- 100% Test Coverage
+- Play rock paper scissors with computer
+- Tested using GitHub Actions
 
 ![RPS workflow](https://github.com/software-students-fall2022/python-package-exercise-project-3-team-6/actions/workflows/tests.yml/badge.svg)
+
+## Quickstart
+Installing Rock Paper Scissors Game is simple with [pipenv](https://pypi.org/project/pipenv/). <br>
+```pipenv install RockPaperScissorsFullGame```
+
+Run the package directly from the command line: <br>
+```python -m RockPaperScissorsFullGame```
