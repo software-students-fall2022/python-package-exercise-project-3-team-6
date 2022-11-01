@@ -1,7 +1,6 @@
 from enum import Enum
 import random
 
-
 class Item(Enum):
     Rock = 1
     Paper = 2
