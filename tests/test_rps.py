@@ -74,3 +74,100 @@ def test_multipleOutcomes(player_item, computer_item, outcome):
 
 def test_inputToItem(player_input, expected):
     assert RPS.inputToItem(player_input) is expected
+
+
+# test def getPlayerAsciiArt with multiple parameters 
+@pytest.mark.parametrize("item, player_art", [
+    (RPS.Item.Rock, """
+            _____
+        ---'  ____)  
+             (_____)  
+             (_____)  
+             (____)
+        ---.(___)
+        """),
+
+    (RPS.Item.Paper, """
+            ______
+        ---'   ____)____  
+                   ______)  
+                   _______)  
+                  _______)
+        ---._________) 
+        """),
+
+    (RPS.Item.Scissors, """
+            ______
+        ---'   ____)_____ 
+                    ______)  
+                __________)  
+              (____)
+        ---.__(___)
+        """),
+
+    (None, "Invalid Option"),
+    (RPS.Outcome.Tie, "Invalid Option")
+])
+
+# test that RPS.getPlayerAsciiArt will return an art that is either a rock, paper or scissor if given the correct item
+def test_getPlayerAsciiArt(item,player_art):
+    assert RPS.getPlayerAsciiArt(item) == player_art
+
+# test def getComputerAsciiArt with multiple parameters 
+@pytest.mark.parametrize("item, computer_art", [
+    (RPS.Item.Rock, """
+           _____
+         (____  '---
+        (_____)  
+        (_____)  
+         (____)
+           (___).---
+
+        """),
+
+    (RPS.Item.Paper, """
+             _____
+       ____(____  '---
+     (_____ 
+    (_______  
+     (_______
+       (_________.---
+        """),
+
+    (RPS.Item.Scissors, """
+                _____
+         ______(____ '--- 
+       (______  
+       (__________  
+            (____)
+             (___)__.---
+        """),
+
+    (None, "Invalid Option"),
+    (RPS.Outcome.Tie, "Invalid Option")
+])
+
+# test that RPS.getComputerAsciiArt will return an art that is either a rock, paper or scissor if given the correct item
+def test_getComputerAsciiArt(item,computer_art):
+    assert RPS.getComputerAsciiArt(item) == computer_art
+
+
+# test def inputToItem with multiple parameters 
+@pytest.mark.parametrize("player_set_input, expected", [
+    ('Yes', True),
+    ('No', False),
+    ('no', False),
+    ('yes', True),
+    ('1', True),
+    ('2', False),
+    ('3', True),
+    ('0', True),
+    ('kjndsfa', True),
+    ("sdjfn;l", True),
+    ('y', True),
+    ('n', True)
+])
+
+def test_setAsciiVisibility(monkeypatch,player_set_input, expected):
+    monkeypatch.setattr('builtins.input', lambda _: player_set_input)
+    assert RPS.setAsciiVisibility() is expected
