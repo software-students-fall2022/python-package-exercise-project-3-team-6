@@ -1,7 +1,4 @@
-# Rock Paper Scissors Game
-
-## Project description
-WIP
+description WIP
 
 ## Features
 - Fun to play!
