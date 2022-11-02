@@ -10,6 +10,9 @@ For testing RPS.py
     def getComputerItem
     def getOutcome
     def inputToItem
+    def getPlayerAsciiArt
+    def getComputerAsciiArt
+    def setAsciiVisibility
 """
 
 # test that RPS.getComputerItem will return an item that is either a rock, paper or scissor enum
