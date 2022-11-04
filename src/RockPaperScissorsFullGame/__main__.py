@@ -29,10 +29,15 @@ def main():
             else:
                 #Printing out player choice and computer choice.
                 print("You choose " + playerItem.name + ". Computer chooses " + computerItem.name + ".")
-                
-                #Gets the outcome of the round and prints it.
+
+                #Gets the outcome of the round and prints it. 
+                #Automatically stores outcomes in ML.py
                 result = RPS.getOutcome(playerItem,computerItem)
                 print("You " + result.name + ".\n")
+
+                #Print rpsStorage
+                ML.printRps()
+
 
 if __name__ == '__main__':
     main()

@@ -1,5 +1,6 @@
 #Machine Learning functions for higher difficulties
 import RPS
+from enum import Enum
 
 #Stores the results of each round in a dictionary: 
 #{round : {"player" : playerchoice, "computer" :computerchoice}}.
@@ -65,6 +66,13 @@ def storeOutcome(outcome, playerChoice, computerChoice) :
 #Creates the choices dictionary for rpsStorage (auxiliary function).
 def storeChoices(playerChoice, computerChoice) :
     return {"player" : playerChoice, "computer" : computerChoice}
+
+#Prints the current outcomes in rpsStorage 
+def printRps() :
+    if len(rpsStorage) == 0:
+        print(0)
+    for kvp in rpsStorage :
+        print(kvp)
 
 #Iterates through rpsStorage to check if the outcomes from a previous number
 #of rounds before the current one has been repeated before. Returns the next
