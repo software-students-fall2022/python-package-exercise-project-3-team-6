@@ -1,9 +1,9 @@
-# import RockPaperScissorsFullGame.RPS as RPS
+import RockPaperScissorsFullGame.RPS as RPS
 import os
 import sys
 import pytest
 sys.path.append(os.path.abspath("./src/RockPaperScissorsFullGame"))
-import RPS as RPS
+#import RPS as RPS
 
 """
 For testing RPS.py

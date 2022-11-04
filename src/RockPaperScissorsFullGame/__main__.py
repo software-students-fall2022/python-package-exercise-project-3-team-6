@@ -1,5 +1,5 @@
-#import RockPaperScissorsFullGame.RPS as RPS
-import RPS
+import RockPaperScissorsFullGame.RPS as RPS
+# import RPS
 
 
 def main():
