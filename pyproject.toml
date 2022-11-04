@@ -32,3 +32,7 @@ classifiers = [
 
 [project.scripts]
 RPS = "RPS.__main__:main"
+
+[pypi]
+username = RPS-token
+password = pypi-AgEIcHlwaS5vcmcCJGZkYzVmMjUyLTMwYjQtNDE3My1iYzE5LTNiOTEzY2ExZmU3NAACIVsxLFsicm9ja3BhcGVyc2Npc3NvcnNmdWxsZ2FtZSJdXQACLFsyLFsiY2ZkYjgyNGEtZmU4ZS00ZmIyLThmZTItZDA4NGY5NmVkMDYzIl1dAAAGIGoHEaiHCeo7F1__d_xALydk3c6bX3yVWtPuoFLDWV2k
