@@ -3,6 +3,10 @@ import RPS
 import ML
 
 def main():
+    #first ask user if they want to see ascii art
+    asciiVisibility = RPS.setAsciiVisibility()
+    
+    # game
     play = True
     while (play):
         #Randomizes and returns an rps item for the computer choice.
@@ -27,11 +31,13 @@ def main():
                 continue
 
             else:
-                #Printing out player choice and computer choice.
-                print("You choose " + playerItem.name + ". Computer chooses " + computerItem.name + ".")
-
-                #Gets the outcome of the round and prints it. 
-                #Automatically stores outcomes in ML.py
+                playerMove = RPS.getPlayerAsciiArt(playerItem)
+                computerMove = RPS.getComputerAsciiArt(computerItem)
+                if(not asciiVisibility):
+                    print("You choose " + playerItem.name + ". Computer chooses " + computerItem.name + ".")
+                else:
+                    print("Player Move: " + playerItem.name + playerMove)
+                    print("Computer Move: " + computerItem.name + computerMove)
                 result = RPS.getOutcome(playerItem,computerItem)
                 print("You " + result.name + ".\n")
 
