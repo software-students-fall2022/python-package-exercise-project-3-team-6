@@ -2,6 +2,7 @@ from enum import Enum
 import random
 import ML
 
+
 #Denotes instances of Item (plays) with values assigned to them.
 class Item(Enum):
     Rock = 1
@@ -17,13 +18,13 @@ class Outcome(Enum):
 #Accepts two choices (player and computer) and outputs the outcome of the round.
 def getOutcome(playerItem, computerItem):
     if(playerItem.value == computerItem.value):
-        ML.storeOutcome(Outcome.Tie, playerItem.name, computerItem.name)
+        ML.storeOutcome("Tie", playerItem.name, computerItem.name)
         return Outcome.Tie
     elif((playerItem == Item.Rock and computerItem == Item.Scissors) or (playerItem.value == computerItem.value + 1)):
-        ML.storeOutcome(Outcome.Win, playerItem.name, computerItem.name)
+        ML.storeOutcome("Win", playerItem.name, computerItem.name)
         return Outcome.Win
     else:
-        ML.storeOutcome(Outcome.Lose, playerItem.name, computerItem.name)
+        ML.storeOutcome("Lose", playerItem.name, computerItem.name)
         return Outcome.Lose
 
 #Randomizes a number between 1 and 3, and returns the Item (rock, paper, scissors)

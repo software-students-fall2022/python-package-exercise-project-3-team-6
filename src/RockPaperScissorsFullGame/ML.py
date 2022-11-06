@@ -39,6 +39,11 @@ def chooseDifficulty() :
 #Stores the outcome of a round and players' choices (player and computer)
 #in the rpsStorage dictionary. Tracks wins, losses, and ties.
 def storeOutcome(outcome, playerChoice, computerChoice) :
+    global round 
+    global wins 
+    global losses 
+    global ties 
+
     if (outcome == "Win") :
         kvp = {round : storeChoices(playerChoice, computerChoice)}
         rpsStorage.update(kvp)
@@ -69,10 +74,16 @@ def storeChoices(playerChoice, computerChoice) :
 
 #Prints the current outcomes in rpsStorage 
 def printRps() :
+    #If there aren't any values in RPS storage (shouldn't ever be the case), prints 0.
     if len(rpsStorage) == 0:
         print(0)
-    for kvp in rpsStorage :
-        print(kvp)
+    else :
+        tracker = 1
+
+        #Printing the round and the value in the rpsStorage for the outcome of each round.
+        for kvp in rpsStorage.values() :
+            print(tracker, " : ", kvp)
+            tracker += 1
 
 #Iterates through rpsStorage to check if the outcomes from a previous number
 #of rounds before the current one has been repeated before. Returns the next
@@ -95,6 +106,23 @@ def ML_historyMatching (numRounds) :
             return resultsArr[startIndex + numRounds]
 
     return None
+
+#Auxiliary function to call ML_historyMatching and prompt the user for num rounds input.
+def ML_callHistoryMatching() :
+    global round
+
+    #Prompts player input.
+    playerInput = input("Would you like to check the history (yes or no)?\n")
+
+    if ("yes").startswith(playerInput.lower()) :
+        playerInput = input("How many rounds?\n")
+        if (type(playerInput) is str and playerInput >= 2 and round > playerInput) :
+            return ML_historyMatching(playerInput)
+        else :
+            return ValueError
+    
+    elif ("no").startswith(playerInput.lower()) :
+        print("next time!")
 
 #Checks if the first array contains the second array.
 def find_subarray(first_arr, second_arr):
