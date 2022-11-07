@@ -202,19 +202,19 @@ def test_chooseDifficulty(monkeypatch, player_input_difficulty, expected_difficu
     monkeypatch.setattr('builtins.input', lambda _: player_input_difficulty)
     assert ML.chooseDifficulty() is expected_difficulty
 
-@pytest.mark.parametrize("store_outcome, store_player, store_computer, store_kvp", [
-    ('Win', 'Paper', 'Rock', {10 : {'player': 'Paper', 'computer': 'Rock'}}),
-    ('Win', 'Scissors', 'Paper', {11 : {'player': 'Scissors', 'computer': 'Paper'}}),
-    ('Win', 'Rock', 'Scissors', {12 : {'player': 'Rock', 'computer': 'Paper'}}),
-    ('Tie', 'Paper', 'Paper', {13 : {'player': 'Paper', 'computer': 'Paper'}}),
-    ('Tie', 'Scissors', 'Scissors', {14 : {'player': 'Scissors', 'computer': 'Scissors'}}),
-    ('Tie', 'Rock', 'Rock', {15 : {'player': 'Rock', 'computer': 'Rock'}}),
-    ('Lose', 'Paper', 'Scissors', {16 : {'player': 'Paper', 'computer': 'Scissors'}}),
-    ('Lose', 'Scissors', 'Rock', {17 : {'player': 'Scissors', 'computer': 'Rock'}}),
-    ('Lose', 'Rock', 'Paper', {18 : {'player': 'Rock', 'computer': 'Paper'}}),
-    ('asdasda', None, None, None)
-])
+# @pytest.mark.parametrize("store_outcome, store_player, store_computer, store_kvp", [
+#     ('Win', 'Paper', 'Rock', {10 : {'player': 'Paper', 'computer': 'Rock'}}),
+#     ('Win', 'Scissors', 'Paper', {11 : {'player': 'Scissors', 'computer': 'Paper'}}),
+#     ('Win', 'Rock', 'Scissors', {12 : {'player': 'Rock', 'computer': 'Paper'}}),
+#     ('Tie', 'Paper', 'Paper', {13 : {'player': 'Paper', 'computer': 'Paper'}}),
+#     ('Tie', 'Scissors', 'Scissors', {14 : {'player': 'Scissors', 'computer': 'Scissors'}}),
+#     ('Tie', 'Rock', 'Rock', {15 : {'player': 'Rock', 'computer': 'Rock'}}),
+#     ('Lose', 'Paper', 'Scissors', {16 : {'player': 'Paper', 'computer': 'Scissors'}}),
+#     ('Lose', 'Scissors', 'Rock', {17 : {'player': 'Scissors', 'computer': 'Rock'}}),
+#     ('Lose', 'Rock', 'Paper', {18 : {'player': 'Rock', 'computer': 'Paper'}}),
+#     ('asdasda', None, None, None)
+# ])
 
-#Testing ML.storeOutcome() to store accurate outcomes in the rpsStorage dictionary.
-def test_storeOutcome(store_outcome, store_player, store_computer, store_kvp) :
-    assert ML.storeOutcome(store_outcome, store_player, store_computer) is store_kvp
+# #Testing ML.storeOutcome() to store accurate outcomes in the rpsStorage dictionary.
+# def test_storeOutcome(store_outcome, store_player, store_computer, store_kvp) :
+#     assert ML.storeOutcome(store_outcome, store_player, store_computer) is store_kvp
