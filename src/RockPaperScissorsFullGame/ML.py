@@ -73,21 +73,22 @@ def storeChoices(playerChoice, computerChoice) :
     return {"player" : playerChoice, "computer" : computerChoice}
 
 #Prints the current outcomes in rpsStorage 
-def printRps() :
+def printRps(showDetails=True) :
     #If there aren't any values in RPS storage (shouldn't ever be the case), prints 0.
-    if len(rpsStorage) == 0:
-        print(0)
-    else :
-        tracker = 1
+    if(showDetails):
+        if len(rpsStorage) == 0:
+            print(0)
+        else :
+            tracker = 1
 
-        print("\nOutcomes of the previous rounds: ")
+            print("\nOutcomes of the previous rounds: ")
 
-        #Printing the round and the value in the rpsStorage for the outcome of each round.
-        for kvp in rpsStorage.values() :
-            print(tracker, " : ", kvp)
-            tracker += 1
+            #Printing the round and the value in the rpsStorage for the outcome of each round.
+            for kvp in rpsStorage.values() :
+                print(tracker, " : ", kvp)
+                tracker += 1
 
-        print("")
+            print("")
 
 #Iterates through rpsStorage to check if the outcomes from a previous number
 #of rounds before the current one has been repeated before. Returns the next
@@ -95,7 +96,7 @@ def printRps() :
 #segment. If there isn't a repeated segment, the previous number of rounds checked
 #is decremented and checked again. This repetition occurs until number of rounds
 #is lower than 2 (not really a segment).
-def ML_historyMatching (numRounds) :
+def ML_historyMatching (numRounds, showDetails=True) :
     #Fetching the values in rpsStorage dictionary.
     resultsArr = list(rpsStorage.values())
 
@@ -111,8 +112,9 @@ def ML_historyMatching (numRounds) :
         #that will serve as the starting index for the segment of key-value pairs in resultsArr[] that match the 
         #ones in fractResultsArr[].
         startIndex = find_subarray(resultsArr, fractResultsArr)
-        print("this is the fract results arr: ", fractResultsArr) #
-        print("this is the start index: ", startIndex) #
+        if(showDetails):
+            print("this is the fract results arr: ", fractResultsArr) #
+            print("this is the start index: ", startIndex) #
 
         #If there are no segments of key-value pairs in the larger resultsArr[] which match the ones in
         #the smaller fractResultsArr[], the number of past rounds checked will be decremented. This loop continues
@@ -131,7 +133,7 @@ def ML_historyMatching (numRounds) :
     return None
 
 #Auxiliary function to call ML_historyMatching and prompt the user for num rounds input.
-def ML_callHistoryMatching(caller) :
+def ML_callHistoryMatching(caller, showDetails=True) :
     global round
 
     #Prompts player input if the caller is the player
@@ -144,7 +146,7 @@ def ML_callHistoryMatching(caller) :
 
             #Checks if the player wants to check an appropriate number of past rounds (makes sure the current round is more than the number of past rounds).
             if (playerInput >= 2 and round > playerInput) :
-                return ML_historyMatching(playerInput)
+                return ML_historyMatching(playerInput, showDetails)
             else :
                 return ValueError
         
@@ -155,7 +157,7 @@ def ML_callHistoryMatching(caller) :
     #If the caller is the computer, automatically sets the numRounds to 1 less than the total rounds in the game.
     elif ("computer").startswith(caller.lower()) :
         if (round >= 3) :
-            return ML_historyMatching(round-2)
+            return ML_historyMatching(round-2, showDetails)
     
     return None
       
