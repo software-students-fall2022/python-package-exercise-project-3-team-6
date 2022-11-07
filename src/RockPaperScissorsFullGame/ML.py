@@ -80,10 +80,14 @@ def printRps() :
     else :
         tracker = 1
 
+        print("\nOutcomes of the previous rounds: ")
+
         #Printing the round and the value in the rpsStorage for the outcome of each round.
         for kvp in rpsStorage.values() :
             print(tracker, " : ", kvp)
             tracker += 1
+
+        print("")
 
 #Iterates through rpsStorage to check if the outcomes from a previous number
 #of rounds before the current one has been repeated before. Returns the next
@@ -92,37 +96,69 @@ def printRps() :
 #is decremented and checked again. This repetition occurs until number of rounds
 #is lower than 2 (not really a segment).
 def ML_historyMatching (numRounds) :
-    resultsArr = rpsStorage.values()
-    fractResultsArr = []
+    #Fetching the values in rpsStorage dictionary.
+    resultsArr = list(rpsStorage.values())
+
     while numRounds != 1 :
+        fractResultsArr = []
+
+        #Iterates through the last n rounds and stores their key-value pairs into fractResultsArr[]. 
         for index in range(len(resultsArr) - numRounds, len(resultsArr), 1) :
             fractResultsArr.append(resultsArr[index])
 
+        #Using the auxiliary function find_subarray(), a segment of key-value pairs in the larger resultsArr[] 
+        #containing the key-value pairs of the smaller fractResultsArr[] will be found. An index will be returned
+        #that will serve as the starting index for the segment of key-value pairs in resultsArr[] that match the 
+        #ones in fractResultsArr[].
         startIndex = find_subarray(resultsArr, fractResultsArr)
+        print("this is the fract results arr: ", fractResultsArr) #
+        print("this is the start index: ", startIndex) #
+
+        #If there are no segments of key-value pairs in the larger resultsArr[] which match the ones in
+        #the smaller fractResultsArr[], the number of past rounds checked will be decremented. This loop continues
+        #until past rounds equals 1. 
         if startIndex == None :
-            fractResultsArr.clear()
             numRounds -= 1
+            continue
+
+        #Returns the expected move the player will play after the matched segment. Checks if the expected move is in
+        #the bounds of the resultsArr (numRounds can't encompass the entire array AND the matching segment cannot be last n 
+        #rounds).  
         elif not (startIndex + numRounds >= len(resultsArr)):
             return resultsArr[startIndex + numRounds]
 
+        numRounds -= 1
     return None
 
 #Auxiliary function to call ML_historyMatching and prompt the user for num rounds input.
-def ML_callHistoryMatching() :
+def ML_callHistoryMatching(caller) :
     global round
 
-    #Prompts player input.
-    playerInput = input("Would you like to check the history (yes or no)?\n")
+    #Prompts player input if the caller is the player
+    if ("player").startswith(caller.lower()) :
+        playerInput = input("Would you like to check the history (yes or no)?\n")
 
-    if ("yes").startswith(playerInput.lower()) :
-        playerInput = input("How many rounds?\n")
-        if (type(playerInput) is str and playerInput >= 2 and round > playerInput) :
-            return ML_historyMatching(playerInput)
-        else :
-            return ValueError
+        #If the player's response is yes, prompts for how many past rounds to check.
+        if ("yes").startswith(playerInput.lower()) :
+            playerInput = int(input("How many rounds?\n"))
+
+            #Checks if the player wants to check an appropriate number of past rounds (makes sure the current round is more than the number of past rounds).
+            if (playerInput >= 2 and round > playerInput) :
+                return ML_historyMatching(playerInput)
+            else :
+                return ValueError
+        
+        #Additional output if user doesn't want to do history matching.
+        elif ("no").startswith(playerInput.lower()) :
+            print("Next time!")
     
-    elif ("no").startswith(playerInput.lower()) :
-        print("next time!")
+    #If the caller is the computer, automatically sets the numRounds to 1 less than the total rounds in the game.
+    elif ("computer").startswith(caller.lower()) :
+        if (round >= 3) :
+            return ML_historyMatching(round-2)
+    
+    return None
+      
 
 #Checks if the first array contains the second array.
 def find_subarray(first_arr, second_arr):
@@ -134,8 +170,9 @@ def find_subarray(first_arr, second_arr):
 
     while first < first_len and second < second_len:
         #From the beginning of each array, every element is matched to check
-        #for an equality.
-        if first_arr[first] == second_arr[second]:
+        #for an equality. In this case, we only want to match the player's past moves
+        #to find a pattern so only the key-value pair for the player is checked (hence [0]).
+        if (first_arr[first])['player'] == (second_arr[second])['player']:
             first += 1
             second += 1
 

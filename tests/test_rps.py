@@ -5,6 +5,7 @@ import pytest
 
 sys.path.append(os.path.abspath("./src/RockPaperScissorsFullGame"))
 import RPS as RPS
+import ML as ML
 
 """
 For testing RPS.py
@@ -175,3 +176,45 @@ def test_getComputerAsciiArt(item,computer_art):
 def test_setAsciiVisibility(monkeypatch,player_set_input, expected):
     monkeypatch.setattr('builtins.input', lambda _: player_set_input)
     assert RPS.setAsciiVisibility() is expected
+
+#---------------------------------------------------------------------------------
+#--------------------------------Benji's Functions--------------------------------
+#---------------------------------------------------------------------------------
+
+#Parameters and return values for test_chooseDifficulty()
+@pytest.mark.parametrize("player_input_difficulty, expected_difficulty", [
+    ('easy', ML.difficulty.Easy),
+    ('medium', ML.difficulty.Medium),
+    ('hard', ML.difficulty.Hard),
+    ('e', ML.difficulty.Easy),
+    ('m', ML.difficulty.Medium),
+    ('h', ML.difficulty.Hard),
+    ('Easy', ML.difficulty.Easy),
+    ('Medium', ML.difficulty.Medium),
+    ('hArD', ML.difficulty.Hard),
+    ('mEdIum', ML.difficulty.Medium),
+    ('NONE', None),
+    ('adasdasdas', None)
+])
+
+#Testing ML.chooseDifficulty() to return a correct difficulty.
+def test_chooseDifficulty(monkeypatch, player_input_difficulty, expected_difficulty) :
+    monkeypatch.setattr('builtins.input', lambda _: player_input_difficulty)
+    assert ML.chooseDifficulty() is expected_difficulty
+
+@pytest.mark.parametrize("store_outcome, store_player, store_computer, store_kvp", [
+    ('Win', 'Paper', 'Rock', {10 : {'player': 'Paper', 'computer': 'Rock'}}),
+    ('Win', 'Scissors', 'Paper', {11 : {'player': 'Scissors', 'computer': 'Paper'}}),
+    ('Win', 'Rock', 'Scissors', {12 : {'player': 'Rock', 'computer': 'Paper'}}),
+    ('Tie', 'Paper', 'Paper', {13 : {'player': 'Paper', 'computer': 'Paper'}}),
+    ('Tie', 'Scissors', 'Scissors', {14 : {'player': 'Scissors', 'computer': 'Scissors'}}),
+    ('Tie', 'Rock', 'Rock', {15 : {'player': 'Rock', 'computer': 'Rock'}}),
+    ('Lose', 'Paper', 'Scissors', {16 : {'player': 'Paper', 'computer': 'Scissors'}}),
+    ('Lose', 'Scissors', 'Rock', {17 : {'player': 'Scissors', 'computer': 'Rock'}}),
+    ('Lose', 'Rock', 'Paper', {18 : {'player': 'Rock', 'computer': 'Paper'}}),
+    ('asdasda', None, None, None)
+])
+
+#Testing ML.storeOutcome() to store accurate outcomes in the rpsStorage dictionary.
+def test_storeOutcome(store_outcome, store_player, store_computer, store_kvp) :
+    assert ML.storeOutcome(store_outcome, store_player, store_computer) is store_kvp
