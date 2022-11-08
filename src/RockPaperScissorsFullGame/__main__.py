@@ -24,6 +24,7 @@ def main():
 
     # if user enters difficulty greater than easy, ask user if they want to turn on text-detail mode (to see how computer tracks history)
     # by default, detail mode is set to false
+    # showDetails will be passed to the ML.py functions that are responsible for printing out the logic behind the computer move
     showDetails = False
     if (difficulty.value > 1):
         details = input("Do you want to turn on detail mode?\nselect one\n(1) Yes\n(2) No\n")
@@ -50,8 +51,10 @@ def main():
             #Current round has to be at least 3 since minimum past rounds checked is 2.
             if round >= 3 :
                 #If there is a successful prediction, the computer choice will be chosen to counter the predicted player item.
+                # pass showDetails... if true then the func will print out 
                 predictedPlayerItem = (ML.ML_callHistoryMatching("computer", showDetails))
                 if (predictedPlayerItem  != None) :
+                    #only print predicted move if in text-detail mode
                     if(showDetails):
                         print("predicted move: ", predictedPlayerItem) #
                     if (predictedPlayerItem['player'] == 'Scissors') :

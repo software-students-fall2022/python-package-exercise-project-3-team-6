@@ -73,8 +73,10 @@ def storeChoices(playerChoice, computerChoice) :
     return {"player" : playerChoice, "computer" : computerChoice}
 
 #Prints the current outcomes in rpsStorage 
+# showDetails defaults to true so that it does not impact unit tests
 def printRps(showDetails=True) :
     #If there aren't any values in RPS storage (shouldn't ever be the case), prints 0.
+    # only print if in text-detail mode
     if(showDetails):
         if len(rpsStorage) == 0:
             print(0)
@@ -96,6 +98,7 @@ def printRps(showDetails=True) :
 #segment. If there isn't a repeated segment, the previous number of rounds checked
 #is decremented and checked again. This repetition occurs until number of rounds
 #is lower than 2 (not really a segment).
+# showDetails defaults to true so that it does not impact unit tests
 def ML_historyMatching (numRounds, showDetails=True) :
     #Fetching the values in rpsStorage dictionary.
     resultsArr = list(rpsStorage.values())
@@ -112,6 +115,8 @@ def ML_historyMatching (numRounds, showDetails=True) :
         #that will serve as the starting index for the segment of key-value pairs in resultsArr[] that match the 
         #ones in fractResultsArr[].
         startIndex = find_subarray(resultsArr, fractResultsArr)
+        
+        # only print if in text-detail mode
         if(showDetails):
             print("this is the fract results arr: ", fractResultsArr) #
             print("this is the start index: ", startIndex) #
