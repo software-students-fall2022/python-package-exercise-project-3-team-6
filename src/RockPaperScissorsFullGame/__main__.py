@@ -3,6 +3,10 @@ import RPS
 import ML
 
 def main():
+    # arr = [{1 : {'player': 'Paper', 'computer': 'Rock'}}, {2 : {'player': 'Scissors', 'computer': 'Paper'}}, {3 : {'player': 'Rock', 'computer': 'Scissors'}}, {4 : {'player': 'Paper', 'computer': 'Paper'}}]
+    # for kvp in arr :
+    #     ML.rpsStorage.update(kvp)
+    ML.printRps()
     #print welcome banner
     print("""    
       __        __   __         __   ___  __     __   __   __          __        __   ___  __     __   __     __   __   __   __   __  

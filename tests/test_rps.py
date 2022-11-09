@@ -80,7 +80,6 @@ def test_multipleOutcomes(player_item, computer_item, outcome):
 def test_inputToItem(player_input, expected):
     assert RPS.inputToItem(player_input) is expected
 
-
 # test def getPlayerAsciiArt with multiple parameters 
 @pytest.mark.parametrize("item, player_art", [
     (RPS.Item.Rock, """
@@ -220,13 +219,16 @@ def test_storeOutcome(store_outcome, store_player, store_computer, store_kvp) :
     ML.round = 1
     assert ML.storeOutcome(store_outcome, store_player, store_computer) == store_kvp
 
-@pytest.mark.parametrize("print_input", [
-    ({1 : {'player': 'Paper', 'computer': 'Rock'}}),
-    ({1 : {'player': 'Paper', 'computer': 'Rock'}}, {2 : {'player': 'Scissors', 'computer': 'Paper'}}),
-    ({1 : {'player': 'Paper', 'computer': 'Rock'}}, {2 : {'player': 'Scissors', 'computer': 'Paper'}}, {3 : {'player': 'Rock', 'computer': 'Scissors'}}),
-    ({1 : {'player': 'Paper', 'computer': 'Rock'}}, {2 : {'player': 'Scissors', 'computer': 'Paper'}}, {3 : {'player': 'Rock', 'computer': 'Scissors'}}, {4 : {'player': 'Paper', 'computer': 'Paper'}})
-])
+# @pytest.mark.parametrize("print_input", [
+#     ({1 : {'player': 'Paper', 'computer': 'Rock'}}),
+#     ({1 : {'player': 'Paper', 'computer': 'Rock'}}, {2 : {'player': 'Scissors', 'computer': 'Paper'}}),
+#     ({1 : {'player': 'Paper', 'computer': 'Rock'}}, {2 : {'player': 'Scissors', 'computer': 'Paper'}}, {3 : {'player': 'Rock', 'computer': 'Scissors'}}),
+#     ({1 : {'player': 'Paper', 'computer': 'Rock'}}, {2 : {'player': 'Scissors', 'computer': 'Paper'}}, {3 : {'player': 'Rock', 'computer': 'Scissors'}}, {4 : {'player': 'Paper', 'computer': 'Paper'}})
+# ])
 
-def test_printRps(monkeypatch, capsys) :
-    monkeypatch.setattr('builtins.input', lambda _: print_input)
-    assert ML.printRps()
+# def test_printRps(capsys, print_input) :
+#     ML.rpsStorage.update(print_input)
+#     ML.printRps()
+#     out, err = capsys.readouterr()
+#     ML.rpsStorage.clear()
+#     assert out is print_input
