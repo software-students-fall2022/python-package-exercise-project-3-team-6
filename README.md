@@ -9,7 +9,16 @@ Play rock paper scissors against a computer!
 - Beautiful ASCII art
 - Tested using GitHub Actions
 
-## Quickstart
+## Quickstart with pipenv
+
+Installing Rock Paper Scissors Game is simple with [pipenv](https://pypi.org/project/pipenv/). <br>
+```pipenv install RockPaperScissorsFullGame```
+
+Run the package directly from the command line: <br>
+```python -m RockPaperScissorsFullGame```
+
+
+## Quickstart without pipenv
 
 Creates a new virtual environment with the name `.venv`:
 
