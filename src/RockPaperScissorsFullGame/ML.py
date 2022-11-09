@@ -68,7 +68,7 @@ def storeOutcome(outcome, playerChoice, computerChoice) :
     else :
         return None
 
-#Creates the choices dictionary for rpsStorage (auxiliary function).
+#Auxiliary function: Creates the choices dictionary for rpsStorage.
 def storeChoices(playerChoice, computerChoice) :
     return {"player" : playerChoice, "computer" : computerChoice}
 
@@ -159,7 +159,6 @@ def ML_callHistoryMatching(caller) :
     
     return None
       
-
 #Checks if the first array contains the second array.
 def find_subarray(first_arr, second_arr):
     first = 0
