@@ -12,13 +12,39 @@ Play rock paper scissors with a computer!
 - A detailed mode that shows the logic behind the computer move
 - Tested using GitHub Actions
 
-## Install
-Installing Rock Paper Scissors Game is simple with [pipenv](https://pypi.org/project/pipenv/). <br>
-```pipenv install RockPaperScissorsFullGame```
+## Quickstart
 
-## Run
-Run the package directly from the command line: <br>
-```python -m RockPaperScissorsFullGame```
+Creates a new virtual environment with the name `.venv`:
+
+```bash
+python3 -m venv .venv
+```
+
+Activate the virtual environment named `.venv`:
+
+On Mac:
+
+```bash
+source .venv/bin/activate
+```
+On Windows:
+
+```bash
+.venv\Scripts\activate.bat
+```
+
+Install Rock Paper Scissors Game:
+```bash
+pip install RockPaperScissorsFullGame
+```
+
+This package is developed as a game to be played in the terminal.<br>
+Run the package directly from the command line: 
+```bask
+python -m RockPaperScissorsFullGame
+```
+
+## How to play
 
 ## Contributor
 [Benji Luo](https://github.com/BenjiLuo)<br>
