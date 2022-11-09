@@ -38,13 +38,40 @@ Install Rock Paper Scissors Game:
 pip install RockPaperScissorsFullGame
 ```
 
-This package is developed as a game to be played in the terminal.<br>
+This package is developed as a game to be played in the shell.<br>
 Run the package directly from the command line: 
 ```bask
 python -m RockPaperScissorsFullGame
 ```
 
 ## How to play
+### Choose settings
+After running the game, you will be asked if you want the ascii art to be visible.<br>
+```
+Do you want ascii art to be visible?
+select one
+(1) Yes
+(2) No
+```
+Enter "1" or "yes" if you want to turn on the ascii art.<br>
+Enter "2" or "no" if you want to turn off the ascii art.
+
+### Play the game
+Play rock paper scissors by choosing the item. 
+```
+Enter your item: (rock, paper, scissors)
+```
+Enter "rock" or "r" if you want to choose rock.<br>
+Enter "paper" or "p" if you want to choose paper.<br>
+Enter "scissors" or "s" if you want to choose scissors.<br>
+
+The shell will print the result of this round. 
+```
+You choose Paper. Computer chooses Rock.
+You Win.
+```
+### Quit the game
+Enter "quit" to quit the game. 
 
 ## Contributor
 [Benji Luo](https://github.com/BenjiLuo)<br>
