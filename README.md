@@ -73,7 +73,7 @@ Enter "easy" to play the easy mode where computer will randomly choose between r
 Enter "hard" to play the hard mode where computer will use history matching to identify pattern then choose the item.
 <br/><br/>
 **(Hard mode only)**
-You will be asked if you want to turn on the detail mode. With detailed mode on, the terminal will show the outcome of previous rounds.
+You will be asked if you want to turn on the detail mode. With detailed mode on, the terminal will show the outcome of previous rounds and how computer chooses the current item based on previous round.
 ```
 Do you want to turn on detail mode?
 select one
