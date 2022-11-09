@@ -1,0 +1,32 @@
+name: RPS workflow
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  tests:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 4
+    strategy:
+      matrix:
+        os: [windows-latest]
+        python-version: ['3.9', '3.10']
+
+    steps:
+      - name: check out repo code
+        uses: actions/checkout@v3
+      - name: set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+      - name: turn on 'editable' mode
+        run: |
+          pip install -e .
+      - name: execute unit tests
+        run: pytest
