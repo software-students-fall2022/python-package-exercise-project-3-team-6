@@ -7,9 +7,6 @@ Play rock paper scissors against a computer!
 - Easy to install
 - 100% Test Coverage
 - Beautiful ASCII art
-- Two different difficulty levels
-- A hard difficulty level that utilizes history matching
-- A detailed mode that shows the logic behind the computer move
 - Tested using GitHub Actions
 
 ## Quickstart
