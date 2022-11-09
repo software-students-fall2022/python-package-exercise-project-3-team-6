@@ -3,6 +3,13 @@ import RPS
 import ML
 
 def main():
+    #print welcome banner
+    print("""    
+      __        __   __         __   ___  __     __   __   __          __        __   ___  __     __   __     __   __   __   __   __  
+|  | |__  |    /  ` /  \  |\/| |__    |  /  \   |__) /  \ /  ` |__/   |__)  /\  |__) |__  |__)   /__` /  ` | /__` /__` /  \ |__) /__` 
+|/\| |__  |___ \__, \__/  |  | |__    |  \__/   |  \ \__/ \__, |  \   |    /--\ |    |___ |  \   .__/ \__, | .__/ .__/ \__/ |  \ .__/                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    """)
+    
     #first ask user if they want to see ascii art
     asciiVisibility = RPS.setAsciiVisibility()
     
@@ -14,6 +21,19 @@ def main():
         print("You chose medium difficulty! Computer will be using history matching.")
     elif (difficulty.value == 3) :
         print("You chose hard difficulty! Computer will be using history matching.")
+
+    # if user enters difficulty greater than easy, ask user if they want to turn on text-detail mode (to see how computer tracks history)
+    # by default, detail mode is set to false
+    # showDetails will be passed to the ML.py functions that are responsible for printing out the logic behind the computer move
+    showDetails = False
+    if (difficulty.value > 1):
+        details = input("Do you want to turn on detail mode?\nselect one\n(1) Yes\n(2) No\n")
+        if (details == "1" or details.lower() == "yes"): 
+            showDetails = True
+        elif (details == "2" or details.lower() == "no"):
+            showDetails = False
+        else:
+            print("Invalid input... defaulting detailed mode to false")
 
     # game
     play = True
@@ -31,9 +51,12 @@ def main():
             #Current round has to be at least 3 since minimum past rounds checked is 2.
             if round >= 3 :
                 #If there is a successful prediction, the computer choice will be chosen to counter the predicted player item.
-                predictedPlayerItem = (ML.ML_callHistoryMatching("computer"))
+                # pass showDetails... if true then the func will print out 
+                predictedPlayerItem = (ML.ML_callHistoryMatching("computer", showDetails))
                 if (predictedPlayerItem  != None) :
-                    print("predicted move: ", predictedPlayerItem) #
+                    #only print predicted move if in text-detail mode
+                    if(showDetails):
+                        print("predicted move: ", predictedPlayerItem) #
                     if (predictedPlayerItem['player'] == 'Scissors') :
                         computerItem = RPS.Item.Rock
                     elif (predictedPlayerItem['player'] == 'Paper') :
@@ -78,7 +101,7 @@ def main():
                 # print(ML.ML_callHistoryMatching("player"))
 
                 #Print rpsStorage
-                ML.printRps()
+                ML.printRps(showDetails)
         
         #Tracking the round
         round += 1
