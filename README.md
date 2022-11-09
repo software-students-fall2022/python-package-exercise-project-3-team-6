@@ -79,7 +79,7 @@ Enter "quit" to quit the game.
 [Robert Chen](https://github.com/RobertChenYF)
 
 ## Help building this project
-1. [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) this repository. 
+1. [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) our repository([link](https://github.com/software-students-fall2022/python-package-exercise-project-3-team-6)).
 2. Contribute and push any changes to your forked repository. 
 3. [Create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) from your forked repository. 
 4. We will check the pull request and include any meaningful changes when we update the package. 
