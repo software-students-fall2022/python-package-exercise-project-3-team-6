@@ -1,4 +1,5 @@
 # import RockPaperScissorsFullGame.RPS as RPS
+# import RockPaperScissorsFullGame.ML as ML
 import RPS
 import ML
 
@@ -20,10 +21,8 @@ def main():
     #Prompting game difficulty
     difficulty = ML.chooseDifficulty()
     if (difficulty.value == 1) :
-        print("You chose difficulty! Computer will be on random mode.") 
+        print("You chose easy difficulty! Computer will be on random mode.") 
     elif (difficulty.value == 2) :
-        print("You chose medium difficulty! Computer will be using history matching.")
-    elif (difficulty.value == 3) :
         print("You chose hard difficulty! Computer will be using history matching.")
 
     # if user enters difficulty greater than easy, ask user if they want to turn on text-detail mode (to see how computer tracks history)

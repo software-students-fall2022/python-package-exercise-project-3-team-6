@@ -14,15 +14,11 @@ import ML as ML
 #Parameters and return values for test_chooseDifficulty()
 @pytest.mark.parametrize("player_input_difficulty, expected_difficulty", [
     ('easy', ML.difficulty.Easy),
-    ('medium', ML.difficulty.Medium),
     ('hard', ML.difficulty.Hard),
     ('e', ML.difficulty.Easy),
-    ('m', ML.difficulty.Medium),
     ('h', ML.difficulty.Hard),
     ('Easy', ML.difficulty.Easy),
-    ('Medium', ML.difficulty.Medium),
     ('hArD', ML.difficulty.Hard),
-    ('mEdIum', ML.difficulty.Medium),
     ('NONE', None),
     ('adasdasdas', None)
 ])

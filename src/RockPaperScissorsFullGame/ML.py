@@ -1,5 +1,6 @@
 #Machine Learning functions for higher difficulties
 import RPS
+# import RockPaperScissorsFullGame.RPS as RPS
 from enum import Enum
 
 #Stores the results of each round in a dictionary: 
@@ -20,17 +21,14 @@ ties = 0
 #Difficulties
 class difficulty(Enum):
     Easy = 1
-    Medium = 2
-    Hard = 3
+    Hard = 2
 
 #Prompt the user for choice of difficulty and returns difficulty 
 #if the difficulty begins with the input.
 def chooseDifficulty() :
-    playerInput = input("Enter your preferred difficulty (easy, medium, hard): ")
+    playerInput = input("Enter your preferred difficulty (easy, hard): ")
     if ("easy").startswith(playerInput.lower()): 
         return difficulty.Easy
-    elif ("medium").startswith(playerInput.lower()): 
-        return difficulty.Medium
     elif ("hard").startswith(playerInput.lower()): 
         return difficulty.Hard
     else:

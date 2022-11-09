@@ -10,7 +10,7 @@ pythonpath = [
 [project]
 name = "RockPaperScissorsFullGame"
 description = "A Rock Paper Scissor Game"
-version = "1.0.0"
+version = "1.2.3"
 authors = [
   { name="Team 6"},
 ]
